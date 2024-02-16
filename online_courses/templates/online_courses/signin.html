@@ -1,0 +1,22 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+signin | drizzle-school
+{% endblock %}
+
+{% block body %}
+<div>
+                {% for message in messages%}
+                <p id="success-message">{{message}}</p>
+                {% endfor %}
+  
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ signin_form.as_p }}
+        <input type="submit" name="submit_email" value="Sign in"></input>
+        <a href="{% url 'signup' %}">Create new account</a>
+    </form>
+
+</div>
+{% endblock %}

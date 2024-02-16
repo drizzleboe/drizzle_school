@@ -1,0 +1,37 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+addcourse | drizzle-school
+{% endblock %}
+
+{% block body %}
+<div>
+                {% for message in messages%}
+                <p id="success-message">{{message}}</p>
+                {% endfor %}
+
+    <h3>{{ course.title }}</h3>
+    {% if curriculums %}
+        <table>
+        <tbody>
+        {% for curriculum in curriculums %}
+        <tr>
+            <td>{{ curriculum.name }}</td>
+            <td><a href="/843s98eadmidfn235a/account/addcourse/lesson/{{ curriculum.id }}" style="color:green"><i>Add lessons</i></a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}
+    <h4>Create curriculum</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ curriculum_form.as_p }}
+        <br>
+        <input type="submit" name="create_curriculum" value="Create"
+        style=" padding-left: 30px; padding-right: 30px;" ></input>
+    </form>
+
+</div>
+{% endblock %}

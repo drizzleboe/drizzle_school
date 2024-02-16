@@ -1,0 +1,28 @@
+
+{% load static %}
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>
+  {% block title %} 
+  {% endblock %}
+</title>
+<body>
+  {% block navigations %}
+  <div><a href="{% url 'index' %}">Courses</a>
+       <a href="">Home</a>
+       <a href="">About</a>
+       <a href="{% url 'signin' %}">Account</a>
+  </div>
+  {% endblock %}
+
+        {% block header %}
+        {% endblock %}
+
+
+        {% block body %}
+        {% endblock %}
+
+</body>
+{% block foooter %}
+{% endblock %}
+</html>

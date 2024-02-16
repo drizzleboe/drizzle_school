@@ -1,0 +1,55 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+addcourse | drizzle-school
+{% endblock %}
+
+{% block body %}
+<style>
+    table,td{
+        border: 1px solid gray;
+        border-collapse: collapse;
+        padding: 15px;
+    }
+    th{
+        background-color: darkgrey;
+        
+    }
+</style>
+
+<div>
+        
+    <h3>{{ course.title }}</h3>
+    {% if curriculum %}
+    <h4>Curriculum: {{ curriculum.name }}</h4>
+        <table>
+            <thead>
+                <th>Lesson</th> 
+                <th style="padding-left: 190px;">Duration</th>
+            </thead>
+            <tbody>
+        {% for lesson in lessons %}
+        {% if curriculum.id == lesson.curriculums.id %}
+                <tr>
+                    <td><a href="">{{lesson.lesson_name}}</a></td>
+                    <td><i>__hrs:__min</i></td>
+                </tr>
+        {% endif %}
+        {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+
+        <h4>Create Lesson</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ lesson_form.as_p }}
+        <br>
+        <input type="submit" name="create_lesson" value="Create "
+        style=" padding-left: 30px; padding-right: 30px;" ></input>
+    </form>
+
+</div>
+{% endblock %}

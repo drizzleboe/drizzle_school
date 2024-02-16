@@ -1,0 +1,28 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+account | drizzle-school
+{% endblock %}
+
+{% block body %}
+
+<div>
+                {% for message in messages%}
+                <p id="success-message">{{message}}</p>
+                {% endfor %}
+  <div><img src="{% static 'online_courses/images/default.png' %}"
+    width="50px" height="50px"></div>
+  <div>{{username}}</div>
+  <div><a href="" style="color: green;">Edit account</a></div>
+
+    <a href="{% url 'logout' %}" style="color: red;">Sign out</a>
+
+</div>
+<br>
+<div><a href="">Settings</a> <br>
+    <a href="">My plan courses</a><br>
+    <a href="{% url 'account_courses' %}">My current courses</a><br>
+    <a href="">Summary</a><br>
+</div>
+{% endblock %}

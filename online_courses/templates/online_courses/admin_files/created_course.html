@@ -1,0 +1,21 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+Home | drizzle-school
+{% endblock %}  
+{% block body %}
+<div>
+    <div>
+     
+            <a href="/843s98eadmidfn235a/account/c/{{course.id}}">
+                <div id="course">
+                    <img src="{{ course.image }}" alt="course-image">
+                    <h3>{{ course.title }}</h3>
+
+                </div>
+            </a>
+ 
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+Lesson | drizzle-school
+{% endblock %}
+
+{% block body %}
+<div>
+    <div>
+
+          <div>  
+
+            <div>
+              <h3>{{ lesson.courses }}</h3>
+              <video width="420" height="320" controls>
+              <source src="{{ lesson.lesson_file.url }}" type="video/mp4">
+              </video>                 
+              <p>Lesson: {{ lesson.lesson_name }}</p>
+            </div>
+          <div>
+            <form method="post">
+              {% csrf_token %}
+              <textarea cols="55" rows="2" name="qsn" placeholder="Ask question"></textarea> 
+              <input type="submit" name="question-button" value="Send">
+            </form>
+          </div>
+
+          <div>
+            <h4>Content summary</h4>
+            <Summary>{{ lesson.key_points }}</Summary>
+          </div>  
+
+          </div>
+     
+    
+   
+    </div>
+</div>
+{% endblock %}

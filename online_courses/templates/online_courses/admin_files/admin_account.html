@@ -1,0 +1,27 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+account | drizzle-school
+{% endblock %}
+
+{% block body %}
+<div>
+                {% for message in messages%}
+                <p id="success-message">{{message}}</p>
+                {% endfor %}
+  
+    <h1>superuser account</h1>
+    <p>Username: {{ fullname }}</p>
+    <a href="{% url 'logout' %}">Sign out</a> <br><br>
+    
+    <div>
+        <a href="{% url 'admin_courses' %}">Courses</a> <br>
+        <a href="{% url 'add_course' %}">Add course</a><br>
+        <a href="">Modify <b>About us</b> page</a><br>
+        <a href="">School members</a><br>
+        <a href="">Create user</a><br>
+    </div>
+
+</div>
+{% endblock %}

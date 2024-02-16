@@ -1,0 +1,32 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+courses | drizzle-school
+{% endblock %}  
+{% block body %}
+<div>
+    <div>
+        {% if courses %}
+        {% for course in courses %}
+
+                <div id="course">
+                    <a href="/a-course/{{ course.id }}">
+                        <img src="{{ course.image }}" alt="course-image"
+                        width="300px"  height="200px">
+                    <h4><b></b>{{ course.title }}</h4>
+                    </a>
+                    <div>
+                    </div>
+                    <br><br>
+
+                </div>
+
+        {% endfor %}
+        {% else %}
+        <div><p><b>You are currently not have an enrolled course</b></p></div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

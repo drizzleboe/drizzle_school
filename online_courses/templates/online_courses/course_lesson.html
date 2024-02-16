@@ -1,0 +1,49 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+Lesson | drizzle-school
+{% endblock %}
+
+{% block body %}
+<div>
+    <div>
+    
+          {% if lesson %}
+            
+          <div>
+            <h3>{{ lesson.courses }}</h3>
+            <h4>{{ lesson.curriculums }}</h4>
+            <img src="{% static 'online_courses/images/protection-file-icon.jpg'%}" alt="content locked">
+            <p>Lesson: {{ lesson.lesson_name }}</p> 
+            <p>This content is locked, you are not logged in or enrolled to this course.
+            </p>
+            <table border="1" style="border-collapse: collapse;">
+              
+              {% for message in messages%}
+              <p id="success-message">{{message}}</p>
+              {% endfor %}
+              
+              <tr>
+                  <td border="1"><a href="{% url 'signin' %}">
+                    <button>Login to my account</button>
+                    </a>
+                  </td>
+
+                <form method="post">
+                  {% csrf_token %}
+                  <td><a href="">
+                    <input type="submit" name="enroll-in-acourse" value="Enroll in a course"/>
+                    </a>
+                  </td>
+                </form>
+              </tr>
+            
+            </table>
+          </div>
+      {% endif %}
+    
+   
+    </div>
+</div>
+{% endblock %}

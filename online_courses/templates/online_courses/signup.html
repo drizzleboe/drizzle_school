@@ -1,0 +1,37 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+signup | drizzle-school
+{% endblock %}
+
+{% block body %}
+<div>
+                {% for message in messages%}
+                <p id="success-message">{{message}}</p>
+                {% endfor %}
+    {% if not show_create %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ signup_form.as_p }}
+        <input type="submit" name="submit_email" value="Create Account"></input>
+        <a href="{% url 'signin' %}">I have an account!</a>
+    </form>
+    
+    {% else  %}
+    <form action="" method="post">
+        {% csrf_token %}
+        Password:<input type="password" name="Password" placeholder="********"><br>
+        Repeat password:<input type="password" name="Password" placeholder="********"><br>
+        <ul>
+            <li>
+              Your password can’t be too similar to your other personal information</li>
+            <li>Your password must contain at least 8 characters.</li>
+            <li> Your password can’t be a commonly used password.</li>    
+            <li> Your password can’t be entirely numeric.</li>
+        </ul>
+        <input type="submit" name="password_button" value="Create Account"></input>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+Course | drizzle-school
+{% endblock %}
+
+{% block body %}
+<div>
+    <div>
+       
+           
+                <div>
+                    <img src="{{ course.image.url }}" alt="course-image">
+                    <h1>{{ course.title }}</h1>
+                    
+                    <p>Status: <em  style="color: green;">Active</em></p>
+
+
+                    <style>
+                        table,td{
+                            border-collapse: collapse;
+                            padding: 15px;
+                        }
+                        th{
+                            background-color: darkgrey;
+                        }
+                    </style>
+                
+                    <table>
+                      <tbody>
+                        {% for curriculum in curriculums %}
+                        <th>{{ curriculum.name }}</th><th>Duration</th>
+                        {% for lesson in lessons%}
+                        {% if curriculum.id == lesson.curriculums.id %}
+                        <tr>
+                            <td><a href="/a-lesson/{{ lesson.id }}"> {{lesson.lesson_name}}</a></td>
+                            <td><a href="" style="color:green"><i>__hrs:__min</i></a></td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                       
+                        {% endfor %}
+                        
+                      </tbody>
+                        
+                    </table>
+                    
+                </div>
+    
+   
+    </div>
+</div>
+{% endblock %}

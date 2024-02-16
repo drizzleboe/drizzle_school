@@ -1,0 +1,162 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+Course | drizzle-school
+{% endblock %}
+
+{% block body %}
+<div>
+    <div>
+       
+           
+                <div>
+                    <img src="{{ course.image.url }}" alt="course-image"
+                    width="300px" height="200px">
+                    <h1>{{ course.title }}</h1>
+                    {% if authenticated and enrolled %}
+                    <p>Your status:<em style="color:green">Enrolled</em></p>
+                    <p>{{course.description}}</p>
+                    <p>{{course.more}}</p>
+                    <p><b>What you will learn</b></p>
+
+
+                    <style>
+                        table,td{
+                            border-collapse: collapse;
+                            padding: 15px;
+                        }
+                        th{
+                            background-color: darkgrey;
+                        }
+                    </style>
+                
+                    <table>
+                      <tbody>
+                        {% for curriculum in curriculums %}
+                        <th>{{ curriculum.name }}</th><th>Duration</th>
+                        {% for lesson in lessons%}
+                        {% if curriculum.id == lesson.curriculums.id %}
+                        <tr>
+                            <td><a href="/a-lesson/{{ lesson.id }}"> {{lesson.lesson_name}}</a></td>
+                            <td><a href="" style="color:green"><i>__hrs:__min</i></a></td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %} 
+                      </tbody> 
+                    </table>
+                    {% elif authenticated and not enrolled %}
+                    <p>Your status:<em style="color:red">Not enrolled</em></p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <form>
+                                    <td><input type="button" name="enroll-in-acourse" value="Enroll in acourse" style="background-color: green; color: aliceblue;"></td>
+                                    <td><input type="button" name="add-to-future-plan" value="Add to future plan" style="background-color: rgb(7, 7, 147); color: aliceblue;"></td>
+                                </form>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p>{{course.description}}</p>
+                    <p>{{course.more}}</p>
+                    <p><b>What you will learn</b></p>
+
+
+                    <style>
+                        table,td{
+                            border-collapse: collapse;
+                            padding: 15px;
+                        }
+                        th{
+                            background-color: darkgrey;
+                        }
+                    </style>
+                
+                    <table>
+                      <tbody>
+                        {% for curriculum in curriculums %}
+                        <th>{{ curriculum.name }}</th><th>Duration</th>
+                        {% for lesson in lessons%}
+                        {% if curriculum.id == lesson.curriculums.id %}
+                        <tr>
+                            <td><a href="/course/course-lesson/{{ lesson.id }}"> {{lesson.lesson_name}}</a></td>
+                            <td><a href="" style="color:green"><i>__hrs:__min</i></a></td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                       
+                        {% endfor %}
+                        
+                      </tbody>
+                        
+                    </table>
+                    {% else %}
+                    <p style="color: rgb(255, 149, 0);"> <em>For better experience please login to your account</em></p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <form>
+                                    <td><input type="button" name="enroll-in-acourse" value="Enroll in acourse" style="background-color: green; color: aliceblue;"></td>
+                                    <td><input type="button" name="add-to-future-plan" value="Add to future plan" style="background-color: rgb(7, 7, 147); color: aliceblue;"></td>
+                                </form>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>{{course.description}}</p>
+                    <p>{{course.more}}</p>
+                    <p><b>What you will learn</b></p>
+
+
+                    <style>
+                        table,td{
+                            border-collapse: collapse;
+                            padding: 15px;
+                        }
+                        th{
+                            background-color: darkgrey;
+                        }
+                    </style>
+                
+                    <table>
+                      <tbody>
+                        {% for curriculum in curriculums %}
+                        <th>{{ curriculum.name }}</th><th>Duration</th>
+                        {% for lesson in lessons%}
+                        {% if curriculum.id == lesson.curriculums.id %}
+                        <tr>
+                            <td><a href="/course/course-lesson/{{ lesson.id }}"> {{lesson.lesson_name}}</a></td>
+                            <td><a href="" style="color:green"><i>__hrs:__min</i></a></td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                       
+                        {% endfor %}
+                        
+                      </tbody>
+                        
+                    </table>
+                  
+                   
+                    {% endif %}
+                    
+                    {% for message in messages%}
+                    <p id="success-message">{{message}}</p>
+                    {% endfor %}
+
+                    {% if authenticated and enrolled %}
+                        <p><a href="">Continue learning</a></p>
+
+                    {% else %}
+                    <form method="post">
+                     {% csrf_token %}
+                     <td><input type="button" name="enroll-in-acourse" value="Enroll in acourse" style="background-color: green; color: aliceblue;"></td>
+                  </form>
+                   {% endif %}
+                </div>
+    
+   
+    </div>
+</div>
+{% endblock %}

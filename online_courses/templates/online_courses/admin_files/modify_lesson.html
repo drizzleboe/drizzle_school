@@ -1,0 +1,39 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+addcourse | drizzle-school
+{% endblock %}
+
+{% block body %}
+
+<div>     
+    <h3>{{ course.title }}</h3>
+    {% if curriculum %}
+    <h4>Curriculum: {{ curriculum.name }}</h4>
+
+    {% endif %}
+     <h4>modify Lesson</h4>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ lesson_form.as_p }}
+        <br>
+        <input type="submit" name="modify_lesson" value = "save"
+        style=" padding-left: 30px; padding-right: 30px;" ></input>
+    </form>
+
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

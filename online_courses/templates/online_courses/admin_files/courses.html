@@ -1,0 +1,55 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+courses | drizzle-school
+{% endblock %}  
+{% block body %}
+<div>
+    <div>
+        {% for course in courses %}
+
+                <div id="course">
+                    <img src="{{ course.image }}" alt="course-image"
+                    width="300px" height="200px">
+                    <h4><b>Title</b>:{{ course.title }}<a href="/843s98eadmidfn235a/account/modify/{{course.id}}" style="color:green">  <i>Rename</i></a></h4>
+                    <p><b>Created on</b>: {{ course.date }} {{ course.time }}</p>
+                    <p><b>Price</b>: {{ course.price }} <a href="/843s98eadmidfn235a/account/modify/{{course.id}}" style="color:green"><i>Adjust</i></a></p>
+                    <p><b>Description</b>: {{ course.description }} <a href="/843s98eadmidfn235a/account/modify/{{course.id}}" style="color:green"><i>Modify</i></a></p>
+                    <p><b>More about the course</b>: {{ course.more }} <a href="/843s98eadmidfn235a/account/modify/{{course.id}}" style="color:green"><i>Modify</i></a></p>
+                    <p><b>Enrolled Students: {{ course.user.all.count }}</b></p>
+                    
+                    <div>
+                        <p><b><a href="/843s98eadmidfn235a/account/courses/{{ course.id }}">course curriculum</a></b></p>
+                        
+                    </div>
+                    <div>
+                        
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{  course.id }}" name="deleted_coourse_id">
+                            <input type="submit" onclick="" value="Delete course" name="delete_course" style="background-color: red; color: aliceblue;">
+                        </form>
+
+                        <script>
+                            function conf(){
+                                yes = window.confirm("Are you sure you want to permanently delete this course!")
+                                if (yes){
+                                    return true;
+                                }
+                                else{
+                                    return false;
+                                }
+                            }
+                        </script>
+                    </div>
+                    <hr><br><br>
+
+                </div>
+
+        {% endfor %}
+        
+
+    </div>
+</div>
+{% endblock %}

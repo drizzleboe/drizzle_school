@@ -1,0 +1,34 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+Modifycourse | drizzle-school
+{% endblock %}
+
+{% block body %}
+<style>
+    #id_title, #id_price, #id_description, #id_more{
+        border: none;
+    }
+    #save{
+        color: green;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+
+<div>
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3>Title: {{ modify_form.title }} <input type="submit" value="save" name="save" id="save"></h3> 
+        <p><b>Price</b>: {{ modify_form.price }} <input type="submit" value="save" name="save" id="save"></p>
+        <p><b>Description</b>: {{ modify_form.description }} <input type="submit" value="save" name="save" id="save"></p>
+        <p><b>More</b>: {{ modify_form.more }} <input type="submit" value="save" name="save" id="save"></p>
+        <br>
+
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'online_courses/base/base.html' %}
+{% load static %}
+
+{% block title %} 
+Course | drizzle-school
+{% endblock %}
+
+{% block body %}
+<div>
+    <div>
+       
+           
+                <div>
+                    <p><b>{{ course.title }}</b></p>
+
+                        <style>
+                            table,td{
+                                border-collapse: collapse;
+                                padding: 15px;
+                            }
+                            th{
+                                background-color: darkgrey;
+                            }
+                        </style>
+                    
+                        <table>
+                          <tbody>
+                            {% for curriculum in curriculums %}
+                            <th>{{ curriculum.name }}</th><th></th>
+                            {% for lesson in lessons%}
+                            {% if curriculum.id == lesson.curriculums.id %}
+                            <tr>
+                                <td>{{lesson.lesson_name}}</td>
+                                <td><a href="/843s98eadmidfn235a/account/modifyl/{{lesson.id}}" style="color:green"><i>Modify</i></a></td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            <tr><td><a href="/843s98eadmidfn235a/account/addcourse/lesson/{{ curriculum.id }}" ><i>Add new lesson</i></a></td><td></td></tr>
+                            {% endfor %}
+                            
+                          </tbody>
+                            
+                        </table>
+                                
+                                
+                                    
+                                
+                                           
+                  
+                    <a href="" style="color: red;"><i>Delete all curriculum in this course</i></a>
+
+                 
+   
+    </div>
+</div>
+{% endblock %}
